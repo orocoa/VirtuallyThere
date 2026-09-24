@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "virtually-there"
+version = "0.3.0"
+description = "A Codex-directed workflow from words and photos to import-ready 3D objects"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = "MIT"
+dependencies = [
+  "numpy>=1.26,<2", "trimesh>=4.12,<5", "networkx>=3,<4",
+  "open3d>=0.18,<0.20", "shapely>=2,<3",
+  "manifold3d>=3.5,<4", "fonttools>=4.60,<5",
+  "mcp>=1.30,<2", "mcp-for-blender==2.0.3"
+]
+
+[project.scripts]
+vt = "vt.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["vt*"]
+
+[tool.setuptools.package-data]
+vt = ["GEOMETRY_LICENSE.txt"]

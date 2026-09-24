@@ -1,0 +1,4 @@
+interface:
+  display_name: "VirtuallyThere"
+  short_description: "文字和图文转成抽象小物，多角度生图、建模刻字并导入 Studio，手动切片打印"
+  default_prompt: "用 $virtually-there 把这些文字或照片做成简约抽象的小物，自动选方向、生成多角度参考，完成模型并导入 Bambu Studio，切片和打印由我操作。"

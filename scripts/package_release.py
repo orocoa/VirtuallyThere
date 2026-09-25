@@ -14,6 +14,12 @@ LICENSE
 README.md
 THIRD_PARTY.md
 config.example.json
+docs/guide.md
+docs/introduction.md
+docs/architecture.html
+docs/architecture.json
+docs/assets/architecture.svg
+docs/assets/ARCHIFY-LICENSE.txt
 examples/model.py
 pyproject.toml
 scripts/install_skill.py

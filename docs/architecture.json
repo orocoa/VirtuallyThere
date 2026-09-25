@@ -1,0 +1,244 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "VirtuallyThere · 从生活素材到三维物件",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "viewBox": [
+      1160,
+      680
+    ]
+  },
+  "components": [
+    {
+      "id": "life-input",
+      "type": "external",
+      "label": "生活素材",
+      "sublabel": "文字、照片与创作要求",
+      "pos": [
+        60,
+        280
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "codex-design",
+      "type": "frontend",
+      "label": "Codex + Skill",
+      "sublabel": "提取线索 · 定方向 · 看图",
+      "pos": [
+        340,
+        280
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "local-runtime",
+      "type": "backend",
+      "label": "本地 Python 执行层",
+      "sublabel": "vt.py · 流程与阶段管理",
+      "pos": [
+        620,
+        280
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "blender-model",
+      "type": "backend",
+      "label": "Blender MCP",
+      "sublabel": "构建体量 · 可选刻字",
+      "pos": [
+        900,
+        280
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "image-concepts",
+      "type": "cloud",
+      "label": "内置 imagegen",
+      "sublabel": "两组参考板 · 覆盖六视角",
+      "pos": [
+        340,
+        60
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "project-records",
+      "type": "database",
+      "label": "本地项目文件",
+      "sublabel": "来源 · brief · 版本 · 报告",
+      "pos": [
+        620,
+        60
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "model-review",
+      "type": "backend",
+      "label": "模型检查与审核",
+      "sublabel": "几何报告 · 六视图审核",
+      "pos": [
+        900,
+        530
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "model-delivery",
+      "type": "database",
+      "label": "模型交付",
+      "sublabel": "毫米 STL · .blend · 预览",
+      "pos": [
+        620,
+        530
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "studio-import",
+      "type": "external",
+      "label": "Bambu Studio",
+      "sublabel": "请求打开 · 界面确认导入",
+      "pos": [
+        340,
+        530
+      ],
+      "size": [
+        190,
+        80
+      ]
+    },
+    {
+      "id": "human-print",
+      "type": "external",
+      "label": "用户切片与打印",
+      "sublabel": "检查支撑、刀路与实物",
+      "pos": [
+        60,
+        530
+      ],
+      "size": [
+        190,
+        80
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "supply-context",
+      "from": "life-input",
+      "to": "codex-design",
+      "label": "文字／照片",
+      "variant": "emphasis"
+    },
+    {
+      "id": "request-concepts",
+      "from": "codex-design",
+      "to": "image-concepts",
+      "label": "生图与看图",
+      "variant": "dashed"
+    },
+    {
+      "id": "execute-design",
+      "from": "codex-design",
+      "to": "local-runtime",
+      "label": "脚本与审核",
+      "variant": "emphasis"
+    },
+    {
+      "id": "record-versions",
+      "from": "local-runtime",
+      "to": "project-records",
+      "label": "版本与哈希",
+      "variant": "dashed"
+    },
+    {
+      "id": "model-via-mcp",
+      "from": "local-runtime",
+      "to": "blender-model",
+      "label": "MCP",
+      "variant": "emphasis"
+    },
+    {
+      "id": "inspect-stl",
+      "from": "blender-model",
+      "to": "model-review",
+      "label": "实际 STL",
+      "variant": "emphasis",
+      "labelDy": 90
+    },
+    {
+      "id": "accept-model",
+      "from": "model-review",
+      "to": "model-delivery",
+      "label": "审核通过",
+      "variant": "emphasis"
+    },
+    {
+      "id": "open-in-studio",
+      "from": "model-delivery",
+      "to": "studio-import",
+      "label": "打开模型",
+      "variant": "emphasis"
+    },
+    {
+      "id": "user-takes-over",
+      "from": "studio-import",
+      "to": "human-print",
+      "label": "用户接手",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "设计由 Codex 推进",
+      "items": [
+        "来源线索进入同一份 brief，贯穿生图与建模。"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "审核对应当前模型",
+      "items": [
+        "实际 STL 重导入渲染，几何报告与视觉审核绑定版本。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "交付到 Studio 为止",
+      "items": [
+        "MODEL_READY 表示可进入切片器；切片和打印由用户操作。"
+      ]
+    }
+  ]
+}
